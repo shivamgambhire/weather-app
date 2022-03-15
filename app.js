@@ -2,13 +2,16 @@ const request = require("request")
 
 
 //const url1 = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714cc0d60cc0f49e&query=17.6599,75.9064&units=f"   //this is api request url and we are providing units(tempreture) as f
-const url = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714cc0d60cc0f49e&query=17.6599,75.9064"   //this is api request url
+const url = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714cc0d60cc0f49e&query="   //this is api request url
 
 
 request({url: url, json:true} , (err, resp) => {           // request method is used to request the api setting the url, json is true bcz  ...
     
     if(err){
-        console.log(err)
+        //console.log(err)                      //err this will print all error logs but error logs are from api request
+        console.log("Sorry Api Request Not Found..!!")
+    }else if(resp.body.error){
+        console.log("Opps Wrong Input...!!! "+resp.body.error.info)     //if the api request is broken or empty then this block will execute
     }else{
         const date = resp.body.location.localtime       //getting local date & time and cut it in ext
         const today = date.split(" ")[0]            //i am just cut the string and store it
