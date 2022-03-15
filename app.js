@@ -7,13 +7,20 @@ const url = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714c
 
 request({url: url, json:true} , (err, resp) => {           // request method is used to request the api setting the url, json is true bcz  ...
     
+    if(err){
+        console.log(err)
+    }else{
+        const date = resp.body.location.localtime       //getting local date & time and cut it in ext
+        const today = date.split(" ")[0]            //i am just cut the string and store it
+    
+        console.log(`Today ${today} is ${resp.body.current.temperature} Degree Temp and Humidity is ${resp.body.current.humidity} `)
+        console.log("and its " + resp.body.current.weather_descriptions[0])     //weather_descriptions is array so fetch with its index
+    
+    }
+    
+    
     //console.log(resp.body.current)            //we are not converting the json string into JS object bcz we are giving the json attribute as true in request method
-    const date = resp.body.location.localtime       //getting local date & time and cut it in ext
-    const today = date.split(" ")[0]            //i am just cut the string and store it
-
-    console.log(`Today ${today} is ${resp.body.current.temperature} Degree Temp and Humidity is ${resp.body.current.humidity} `)
-    console.log("and its " + resp.body.current.weather_descriptions[0])     //weather_descriptions is array so fetch with its index
-
+    
     // const data = JSON.parse(resp.body)       // we are converting the string into JS object and set to data
     // console.log(data.current)                // here we are getting one of attribute of api data that is current, we are not using this bcz we are now setting json as true in request method
 })
