@@ -1,6 +1,7 @@
 const request = require("request")
 
-const geocode = (address, callback) => {
+const geocode = (address, callback) => {        //first is attribure and 2nd is callback function which is being called from inside 
+    
                                                                     // encodeURIComponent()  method encodes a URI component.
     const url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + encodeURIComponent(address) +".json?access_token=pk.eyJ1Ijoic2hpdmFtZ2FtYmhpcmUiLCJhIjoiY2wwcWV2N3RxMDAzbDNjcXJyazNsNmV3eCJ9.BBo4SK6yoEbJnqtYCXC31w&limit=1"
 

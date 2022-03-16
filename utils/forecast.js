@@ -1,6 +1,6 @@
 const request = require("request")
 
-const forecast = (longitude, latitude, callback) => {
+const forecast = (longitude, latitude, callback) => {       //1st and 2nd attribute, third attribute is callback function passing
     
     const url = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714cc0d60cc0f49e&query="+ longitude+","+ latitude   //this is api request url and if you want units(tempreture) as f &units=f  add this in last
 
@@ -25,4 +25,4 @@ const forecast = (longitude, latitude, callback) => {
 //     console.log('Data ',data)
 // })
 
-module.exports = forecast
+module.exports = forecast       //exporting the function
