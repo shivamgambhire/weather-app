@@ -1,6 +1,5 @@
 const request = require("request")
 
-
 //const url1 = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714cc0d60cc0f49e&query=17.6599,75.9064&units=f"   //this is api request url and we are providing units(tempreture) as f
 const url = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714cc0d60cc0f49e&query="   //this is api request url
 
@@ -27,7 +26,6 @@ request({url: url, json:true} , (err, resp) => {           // request method is 
     // const data = JSON.parse(resp.body)       // we are converting the string into JS object and set to data
     // console.log(data.current)                // here we are getting one of attribute of api data that is current, we are not using this bcz we are now setting json as true in request method
 })
-
 
 
 
