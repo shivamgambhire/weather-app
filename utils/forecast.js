@@ -6,11 +6,11 @@ const forecast = (longitude, latitude, callback) => {
 
         request({url: url, json: true}, (error,responce) => {       //request method having two arg error and responce
                 if(error){
-                    callback('Cannot connect to internet',undefined)
+                    callback('Cannot connect to internet',undefined)        // calling callback function 
                 } else if(responce.body.error){
-                    callback('Api Request is Broken',undefined)
+                    callback('Api Request is Broken',undefined)             // calling callback function 
                 } else{
-                    callback(undefined, {
+                    callback(undefined, {                                   // calling callback function and passing st as undefined and 2nd as object
                        temp : responce.body.current.temperature,
                        humidity : responce.body.current.humidity,
                        weather : responce.body.current.weather_descriptions[0], 
@@ -18,7 +18,6 @@ const forecast = (longitude, latitude, callback) => {
                     })
                 }
         })
-
 }
 
 // forecast(17.6599, 75.9064, (err,data) => {            //defining callback function in forecast function calling 
