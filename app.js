@@ -31,8 +31,6 @@ const request = require("request")
 
 
 
-
-
 // //mapbox geocoding we are getting the cordinates using provideing the name of any city in api request
 
 const geocoding = "https://api.mapbox.com/geocoding/v5/mapbox.places/solapur.json?access_token=pk.eyJ1Ijoic2hpdmFtZ2FtYmhpcmUiLCJhIjoiY2wwcWV2N3RxMDAzbDNjcXJyazNsNmV3eCJ9.BBo4SK6yoEbJnqtYCXC31w&limit=1"
