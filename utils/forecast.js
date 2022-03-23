@@ -1,8 +1,10 @@
+//this forecast is used for getting the current weather conditions of the location.
+
 const request = require("request")
 
-const forecast = (longitude, latitude, callback) => {       //1st and 2nd attribute, third attribute is callback function passing
+const forecast = (latitude,longitude, callback) => {       //1st and 2nd attribute, third attribute is callback function passing
     
-    const url = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714cc0d60cc0f49e&query="+ longitude+","+ latitude   //this is api request url and if you want units(tempreture) as f &units=f  add this in last
+    const url = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714cc0d60cc0f49e&query="+ latitude+","+ longitude   //this is api request url and if you want units(tempreture) as f &units=f  add this in last
 
         request({url: url, json: true}, (error,responce) => {       //request method having two arg error and responce
                 if(error){

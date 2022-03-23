@@ -1,3 +1,5 @@
+//with geocode we get the coordinates of provided location
+
 const request = require("request")
 
 const geocode = (address, callback) => {        //first is attribure and 2nd is callback function which is being called from inside 
@@ -14,8 +16,8 @@ const geocode = (address, callback) => {        //first is attribure and 2nd is 
         }
         else{
             callback(undefined, {
-                longitude : responce.body.features[0].center[0],       //responce is attribute from api we are using it to interact with api
                 latitude : responce.body.features[0].center[1],        //body is where all data is located and feature is one of data from api, here feature is array bcz we are using []
+                longitude : responce.body.features[0].center[0],       //responce is attribute from api we are using it to interact with api
                 location : responce.body.features[0].place_name
             })
         }

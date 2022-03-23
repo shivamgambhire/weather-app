@@ -2,6 +2,9 @@ const request = require("request")
 const geocode = require("./utils/geocode")
 const forecast = require("./utils/forecast")
 
+//process.argv provide us to get the command line arguments
+const address = process.argv[2]
+
 //const url1 = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714cc0d60cc0f49e&query=17.6599,75.9064&units=f"   //this is api request url and we are providing units(tempreture) as f
 // const url = "http://api.weatherstack.com/current?access_key=ba628cb8b6c86aa2714cc0d60cc0f49e&query="   //this is api request url brokens
 
@@ -54,20 +57,37 @@ const forecast = require("./utils/forecast")
 //         const cordinates2 = responce.body.features[0].geometry.coordinates[1]
 //         console.log("Coordinates " , cordinates1,cordinates2)
 //     }
-
 // })
 
 
-
-// //below geocode functions declaration is declared in utils folder 
-// geocode('new york', (err, data) => {             //first arg is url address second is function callback here the function body is declared written
-//     console.log('Error ',err)                   //if anywhere callback function is called then this function is called and perform action
-//     console.log('Data ',data)                                            
-// })
-
-
-//below function is calling from forcast file declared in utils folder
-forecast(17.6599, 75.9064, (err,data) => {            //defining callback function in forecast function calling 
-    console.log('Error ',err)
-    console.log('Data ',data)
+//here we are merge the geocode into forecast code for more flexible
+        //here we use address as variable... we are getting it from command line arguments
+geocode(address, (err, data) => {             //first arg is url address second is function callback here the function body is declared written
+    if(err){                                    //if the error is occured
+     return console.log(error)    // here we use the return. NOTE: if the error is occured the if will return the current conditions and will not go for rest of execution
+}     
+    
+    forecast(data.latitude, data.longitude, (err,forcastData) => {            //defining callback function in forecast function calling 
+                if(err){                                    //if the error is occured
+     return console.log(error)    // here we use the return. NOTE: if the error is occured the if will return the current conditions and will not go for rest of execution
+} 
+        console.log(data.location)
+        console.log(forcastData)
+    })
 })
+
+
+
+//uncomment if you want to run using location name
+//below geocode functions declaration is declared in utils folder 
+// geocode('solapur', (err, data) => {             //first arg is url address second is function callback here the function body is declared written
+//     console.log('Error ',err)                   //if anywhere callback function is called then this function is called and perform action
+//     console.log('Data ',data)          
+// })
+
+
+// //below function is calling from forcast file declared in utils folder
+// forecast(17.6599, 75.9064, (err,data) => {            //defining callback function in forecast function calling 
+//     console.log('Error ',err)
+//     console.log('Data ',data)
+// })
